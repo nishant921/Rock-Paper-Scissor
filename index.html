@@ -2,39 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissor Game</title>
+
+    <title>Rock Paper Scissors Game - Play Online</title>
+
+    <meta
+        name="description"
+        content="Play a fun and interactive Rock Paper Scissors game online. Choose rock, paper, or scissors and compete against the computer."
+    >
+
+    <meta
+        name="keywords"
+        content="rock paper scissors, rock paper scissors game, online game, play rock paper scissors"
+    >
+
+    <meta name="author" content="Nishant">
+
+    <!-- Search engines -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Rock Paper Scissors Game - Play Online">
+    <meta
+        property="og:description"
+        content="Play Rock Paper Scissors online and challenge the computer."
+    >
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="rock.png">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Rock Paper Scissors</h1>
-    <div class="choices">
-        <div id="rock" class="choice">
-            <img src="rock.png">
-        </div>
-        <div id="paper" class="choice">
-            <img src="paper.png">
-        </div>
-        <div id="scissor" class="choice">
-            <img src="scissors.png">
-        </div>
-    </div>
 
-    <div class="score-board">
-        <div class="score">
-            <p id="user-score">0</p>
-            <p>You</p>
-        </div>
-        <div class="score">
-            <p id="computer-score">0</p>
-            <p>Computer</p>
-        </div>
-    </div>
+    <header>
+        <h1>Rock Paper Scissors</h1>
+        <p>Play Rock Paper Scissors online against the computer.</p>
+    </header>
 
-    <div class="msg-container">
-        <p id="msg">Play Your Move</p>
-    </div>
+    <main>
+
+        <section class="choices" aria-label="Choose your move">
+
+            <div id="rock" class="choice">
+                <img src="rock.png" alt="Rock">
+            </div>
+
+            <div id="paper" class="choice">
+                <img src="paper.png" alt="Paper">
+            </div>
+
+            <div id="scissor" class="choice">
+                <img src="scissors.png" alt="Scissors">
+            </div>
+
+        </section>
+
+        <section class="score-board" aria-label="Game score">
+
+            <div class="score">
+                <p id="user-score">0</p>
+                <p>You</p>
+            </div>
+
+            <div class="score">
+                <p id="computer-score">0</p>
+                <p>Computer</p>
+            </div>
+
+        </section>
+
+        <section class="msg-container" aria-live="polite">
+            <p id="msg">Play Your Move</p>
+        </section>
+
+    </main>
 
     <script src="app.js"></script>
+
 </body>
 </html>
