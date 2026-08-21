@@ -1,180 +1,381 @@
+/* =========================================
+   RESET
+========================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #1e293b
+    );
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+
     text-align: center;
 }
 
-body {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: white;
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-}
 
-/* Heading */
-h1 {
+/* =========================================
+   HEADER
+========================================= */
+
+header {
     background: #020617;
-    color: #f8fafc;
-    min-height: 5rem;
-    line-height: 5rem;
-    font-size: 2.5rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+    padding: 1.5rem 1rem;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Choices */
+
+h1 {
+    color: #f8fafc;
+
+    font-size: 2.5rem;
+
+    margin-bottom: 0.5rem;
+}
+
+
+.subtitle {
+    color: #94a3b8;
+
+    font-size: 1rem;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+main {
+    padding: 1rem;
+}
+
+
+/* =========================================
+   CHOICES
+========================================= */
+
 .choices {
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     gap: 3rem;
+
     margin-top: 4rem;
 }
 
+
+/* =========================================
+   CHOICE
+========================================= */
+
 .choice {
-    height: 165px;
     width: 165px;
+
+    height: 165px;
+
     border-radius: 50%;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
-    transition: 0.25s ease;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
+
 
 .choice:hover {
     cursor: pointer;
+
     transform: scale(1.1);
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+
+    box-shadow:
+        0 0 25px rgba(255, 255, 255, 0.4);
 }
 
-/* Images */
+
+.choice:focus {
+    outline: 3px solid #38bdf8;
+
+    outline-offset: 5px;
+}
+
+
+/* =========================================
+   IMAGES
+========================================= */
+
 .choice img {
-    height: 150px;
     width: 150px;
+
+    height: 150px;
+
     object-fit: cover;
+
     border-radius: 50%;
+
     transition: 0.25s ease;
 }
 
-/* Score Board */
+
+/* =========================================
+   SCORE BOARD
+========================================= */
+
 .score-board {
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     gap: 6rem;
-    margin: 3rem 0 1.5rem;
-    font-size: 2rem;
+
+    margin-top: 3rem;
 }
 
-.score p:last-child {
+
+.score {
     font-size: 1.2rem;
+
     color: #cbd5e1;
 }
 
-#user-score,
-#computer-score {
+
+.score-number {
     font-size: 4rem;
+
     font-weight: bold;
+
+    color: white;
+
+    margin-bottom: 0.3rem;
 }
 
-/* High Score */
+
+/* =========================================
+   HIGH SCORE
+========================================= */
+
 .high-score {
-    display: inline-flex;
+    display: flex;
+
     flex-direction: column;
-    align-items: center;
+
     justify-content: center;
 
-    background: #020617;
+    align-items: center;
+
+    width: fit-content;
+
+    margin: 2rem auto;
+
     padding: 0.8rem 2.5rem;
-    border-radius: 1rem;
+
+    background: #020617;
 
     border: 1px solid #334155;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35);
 
-    margin-bottom: 2rem;
+    border-radius: 1rem;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.35);
 }
 
+
 .high-score p:first-child {
-    font-size: 1rem;
     color: #94a3b8;
+
+    font-size: 0.9rem;
+
     text-transform: uppercase;
+
     letter-spacing: 2px;
 }
 
+
 #high-score {
     font-size: 2.5rem;
+
     font-weight: bold;
+
     color: #f8fafc;
+
     margin-top: 0.2rem;
 }
 
-/* Message */
+
+/* =========================================
+   MESSAGE
+========================================= */
+
 .msg-container {
     margin-top: 2rem;
+
+    min-height: 70px;
 }
+
 
 #msg {
-    background: #020617;
-    color: white;
-    font-size: 2rem;
     display: inline-block;
+
+    background: #020617;
+
+    color: white;
+
+    font-size: 1.5rem;
+
     padding: 1rem 2rem;
+
     border-radius: 1rem;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.4);
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.25s ease;
 }
 
-/* Mobile Responsive */
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
 @media (max-width: 600px) {
+
+    header {
+        padding: 1.2rem 0.8rem;
+    }
+
 
     h1 {
         font-size: 1.8rem;
-        min-height: 4rem;
-        line-height: 4rem;
     }
+
+
+    .subtitle {
+        font-size: 0.85rem;
+    }
+
+
+    /* Choices */
 
     .choices {
         gap: 1rem;
+
         margin-top: 2.5rem;
     }
 
+
     .choice {
         width: 100px;
+
         height: 100px;
     }
 
+
     .choice img {
         width: 90px;
+
         height: 90px;
     }
 
+
+    /* Score */
+
     .score-board {
         gap: 3rem;
-        margin: 2.5rem 0 1rem;
+
+        margin-top: 2.5rem;
     }
 
-    #user-score,
-    #computer-score {
+
+    .score-number {
         font-size: 3rem;
     }
 
-    .score {
-        font-size: 1.5rem;
-    }
 
-    .score p:last-child {
+    .score {
         font-size: 1rem;
     }
+
+
+    /* High Score */
 
     .high-score {
         padding: 0.7rem 2rem;
     }
 
+
     #high-score {
         font-size: 2rem;
     }
 
+
+    /* Message */
+
     #msg {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+
         padding: 0.8rem 1.2rem;
+
+        max-width: 90%;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL SCREENS
+========================================= */
+
+@media (max-width: 350px) {
+
+    .choices {
+        gap: 0.5rem;
+    }
+
+
+    .choice {
+        width: 85px;
+
+        height: 85px;
+    }
+
+
+    .choice img {
+        width: 78px;
+
+        height: 78px;
+    }
+
+
+    .score-board {
+        gap: 2rem;
     }
 }
