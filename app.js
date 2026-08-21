@@ -2,10 +2,9 @@ let userScore = 0;
 let computerScore = 0;
 
 // Current winning streak
-let winningStreak =
-    Number(localStorage.getItem("winningStreak")) || 0;
+let winningStreak = 0;
 
-// Best consecutive winning streak
+// Best winning streak saved in browser
 let bestStreak =
     Number(localStorage.getItem("bestStreak")) || 0;
 
@@ -25,7 +24,7 @@ const highScoreDisplay =
     document.querySelector("#high-score");
 
 
-// Display best streak when page loads
+// Show saved best streak
 highScoreDisplay.innerText = bestStreak;
 
 
@@ -48,15 +47,14 @@ const genComputerChoice = () => {
 // Draw
 const draw = () => {
 
-    msg.innerText =
-        "Game Draw! Play Again";
+    // Draw does NOT change winning streak
+    msg.innerText = "Game Draw! Play Again";
 
-    msg.style.backgroundColor =
-        "#f59e0b";
+    msg.style.backgroundColor = "#f59e0b";
 };
 
 
-// Show winner
+// Show Winner
 const showWinner = (
     userWin,
     userChoice,
@@ -68,8 +66,7 @@ const showWinner = (
         // User score
         userScore++;
 
-        userScoreP.innerText =
-            userScore;
+        userScoreP.innerText = userScore;
 
 
         // Increase winning streak
@@ -79,8 +76,7 @@ const showWinner = (
         // Update best streak
         if (winningStreak > bestStreak) {
 
-            bestStreak =
-                winningStreak;
+            bestStreak = winningStreak;
 
             highScoreDisplay.innerText =
                 bestStreak;
@@ -95,8 +91,7 @@ const showWinner = (
         msg.innerText =
             `You win! ${userChoice} beats ${computerChoice}`;
 
-        msg.style.backgroundColor =
-            "#16a34a";
+        msg.style.backgroundColor = "#16a34a";
 
     } else {
 
@@ -107,20 +102,19 @@ const showWinner = (
             computerScore;
 
 
-        // Losing resets current streak
+        // ❗ Lose = reset winning streak
         winningStreak = 0;
 
 
         msg.innerText =
             `You lose! ${computerChoice} beats ${userChoice}`;
 
-        msg.style.backgroundColor =
-            "#dc2626";
+        msg.style.backgroundColor = "#dc2626";
     }
 };
 
 
-// Play game
+// Play Game
 const playGame = (userChoice) => {
 
     const computerChoice =
@@ -136,7 +130,6 @@ const playGame = (userChoice) => {
     }
 
 
-    // Determine winner
     let userWin;
 
 
@@ -171,19 +164,16 @@ const playGame = (userChoice) => {
 };
 
 
-// Mouse click
+// Click events
 choices.forEach((choice) => {
 
-    choice.addEventListener(
-        "click",
-        () => {
+    choice.addEventListener("click", () => {
 
-            const userChoice =
-                choice.getAttribute("id");
+        const userChoice =
+            choice.getAttribute("id");
 
-            playGame(userChoice);
-        }
-    );
+        playGame(userChoice);
+    });
 
 });
 
@@ -191,23 +181,20 @@ choices.forEach((choice) => {
 // Keyboard support
 choices.forEach((choice) => {
 
-    choice.addEventListener(
-        "keydown",
-        (event) => {
+    choice.addEventListener("keydown", (event) => {
 
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
+        if (
+            event.key === "Enter" ||
+            event.key === " "
+        ) {
 
-                event.preventDefault();
+            event.preventDefault();
 
-                const userChoice =
-                    choice.getAttribute("id");
+            const userChoice =
+                choice.getAttribute("id");
 
-                playGame(userChoice);
-            }
+            playGame(userChoice);
         }
-    );
+    });
 
 });
