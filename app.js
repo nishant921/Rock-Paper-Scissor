@@ -1,48 +1,35 @@
-/* =========================================
-   GAME VARIABLES
-========================================= */
-
 let userScore = 0;
 let computerScore = 0;
 
+// Current winning streak
+let winningStreak =
+    Number(localStorage.getItem("winningStreak")) || 0;
 
-/* =========================================
-   HIGH SCORE
-========================================= */
-
-// Get saved high score
-let highScore = Number(
-    localStorage.getItem("highScore")
-) || 0;
+// Best consecutive winning streak
+let bestStreak =
+    Number(localStorage.getItem("bestStreak")) || 0;
 
 
-/* =========================================
-   DOM ELEMENTS
-========================================= */
-
+// DOM Elements
 const choices = document.querySelectorAll(".choice");
 
 const msg = document.querySelector("#msg");
 
-const userScoreP = document.querySelector("#user-score");
+const userScoreP =
+    document.querySelector("#user-score");
 
-const compScoreP = document.querySelector("#computer-score");
+const compScoreP =
+    document.querySelector("#computer-score");
 
 const highScoreDisplay =
     document.querySelector("#high-score");
 
 
-/* =========================================
-   DISPLAY SAVED HIGH SCORE
-========================================= */
-
-highScoreDisplay.innerText = highScore;
+// Display best streak when page loads
+highScoreDisplay.innerText = bestStreak;
 
 
-/* =========================================
-   GENERATE COMPUTER CHOICE
-========================================= */
-
+// Generate computer choice
 const genComputerChoice = () => {
 
     const options = [
@@ -58,10 +45,7 @@ const genComputerChoice = () => {
 };
 
 
-/* =========================================
-   DRAW
-========================================= */
-
+// Draw
 const draw = () => {
 
     msg.innerText =
@@ -72,10 +56,7 @@ const draw = () => {
 };
 
 
-/* =========================================
-   SHOW WINNER
-========================================= */
-
+// Show winner
 const showWinner = (
     userWin,
     userChoice,
@@ -84,30 +65,29 @@ const showWinner = (
 
     if (userWin) {
 
-        /* -----------------------------
-           USER WINS
-        ----------------------------- */
-
+        // User score
         userScore++;
 
         userScoreP.innerText =
             userScore;
 
 
-        /* -----------------------------
-           UPDATE HIGH SCORE
-        ----------------------------- */
+        // Increase winning streak
+        winningStreak++;
 
-        if (userScore > highScore) {
 
-            highScore = userScore;
+        // Update best streak
+        if (winningStreak > bestStreak) {
+
+            bestStreak =
+                winningStreak;
 
             highScoreDisplay.innerText =
-                highScore;
+                bestStreak;
 
             localStorage.setItem(
-                "highScore",
-                highScore
+                "bestStreak",
+                bestStreak
             );
         }
 
@@ -120,14 +100,15 @@ const showWinner = (
 
     } else {
 
-        /* -----------------------------
-           COMPUTER WINS
-        ----------------------------- */
-
+        // Computer score
         computerScore++;
 
         compScoreP.innerText =
             computerScore;
+
+
+        // Losing resets current streak
+        winningStreak = 0;
 
 
         msg.innerText =
@@ -139,20 +120,14 @@ const showWinner = (
 };
 
 
-/* =========================================
-   PLAY GAME
-========================================= */
-
+// Play game
 const playGame = (userChoice) => {
 
     const computerChoice =
         genComputerChoice();
 
 
-    /* -----------------------------
-       DRAW
-    ----------------------------- */
-
+    // Draw
     if (userChoice === computerChoice) {
 
         draw();
@@ -161,10 +136,7 @@ const playGame = (userChoice) => {
     }
 
 
-    /* -----------------------------
-       DETERMINE WINNER
-    ----------------------------- */
-
+    // Determine winner
     let userWin;
 
 
@@ -199,10 +171,7 @@ const playGame = (userChoice) => {
 };
 
 
-/* =========================================
-   CLICK EVENTS
-========================================= */
-
+// Mouse click
 choices.forEach((choice) => {
 
     choice.addEventListener(
@@ -219,10 +188,7 @@ choices.forEach((choice) => {
 });
 
 
-/* =========================================
-   KEYBOARD SUPPORT
-========================================= */
-
+// Keyboard support
 choices.forEach((choice) => {
 
     choice.addEventListener(
@@ -241,7 +207,6 @@ choices.forEach((choice) => {
 
                 playGame(userChoice);
             }
-
         }
     );
 
