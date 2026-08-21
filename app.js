@@ -1,11 +1,15 @@
 let userScore = 0;
 let computerScore = 0;
 
+let highScore = localStorage.getItem("highScore") || 0;
+const highScoreDisplay = document.querySelector("#high-score");
+highScoreDisplay.innerText = highScore;
 
 const choices = document.querySelectorAll(".choice");
 const msg = document.querySelector("#msg");
 const userScoreP = document.querySelector("#user-score");
 const compScoreP = document.querySelector("#computer-score");
+
 
 const genComputerChoice = () => {
     // rock paper scissor
