@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
 
@@ -19,74 +20,158 @@
 
     <meta name="author" content="Nishant">
 
-    <!-- Search engines -->
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph / Social Sharing -->
+    <!-- Open Graph -->
     <meta property="og:title" content="Rock Paper Scissors Game - Play Online">
+
     <meta
         property="og:description"
         content="Play Rock Paper Scissors online and challenge the computer."
     >
+
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="rock.png">
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- Header -->
     <header>
         <h1>Rock Paper Scissors</h1>
-        <p>Play Rock Paper Scissors online against the computer.</p>
+
+        <p class="subtitle">
+            Choose your move and beat the computer!
+        </p>
     </header>
+
 
     <main>
 
-        <section class="choices" aria-label="Choose your move">
+        <!-- Choices -->
+        <section
+            class="choices"
+            aria-label="Choose your move"
+        >
 
-            <div id="rock" class="choice">
-                <img src="rock.png" alt="Rock">
+            <div
+                id="rock"
+                class="choice"
+                role="button"
+                tabindex="0"
+                aria-label="Choose Rock"
+            >
+                <img
+                    src="rock.png"
+                    alt="Rock"
+                >
             </div>
 
-            <div id="paper" class="choice">
-                <img src="paper.png" alt="Paper">
+
+            <div
+                id="paper"
+                class="choice"
+                role="button"
+                tabindex="0"
+                aria-label="Choose Paper"
+            >
+                <img
+                    src="paper.png"
+                    alt="Paper"
+                >
             </div>
 
-            <div id="scissor" class="choice">
-                <img src="scissors.png" alt="Scissors">
+
+            <div
+                id="scissor"
+                class="choice"
+                role="button"
+                tabindex="0"
+                aria-label="Choose Scissors"
+            >
+                <img
+                    src="scissors.png"
+                    alt="Scissors"
+                >
             </div>
 
         </section>
 
-        <section class="score-board" aria-label="Game score">
+
+        <!-- Score Board -->
+        <section
+            class="score-board"
+            aria-label="Game score"
+        >
 
             <div class="score">
-                <p id="user-score">0</p>
+
+                <p
+                    id="user-score"
+                    class="score-number"
+                >
+                    0
+                </p>
+
                 <p>You</p>
+
             </div>
+
 
             <div class="score">
-                <p id="computer-score">0</p>
-                <p>Computer</p>
-            </div>
 
-            <div class="high-score">
-                <p>High Score</p>
-               <p id="high-score">0</p>
+                <p
+                    id="computer-score"
+                    class="score-number"
+                >
+                    0
+                </p>
+
+                <p>Computer</p>
+
             </div>
 
         </section>
 
-        <section class="msg-container" aria-live="polite">
-            <p id="msg">Play Your Move</p>
+
+        <!-- High Score -->
+        <section
+            class="high-score"
+            aria-label="High score"
+        >
+
+            <p>High Score</p>
+
+            <p id="high-score">
+                0
+            </p>
+
+        </section>
+
+
+        <!-- Game Message -->
+        <section
+            class="msg-container"
+            aria-live="polite"
+        >
+
+            <p id="msg">
+                Play Your Move
+            </p>
+
         </section>
 
     </main>
 
+
+    <!-- JavaScript -->
     <script src="app.js"></script>
 
 </body>
+
 </html>
